@@ -1,3 +1,5 @@
+# This is a fork, i had to remove it from the network because I accidentally kept creating wrong PRs from phone. This is not my work, just a fork and a build because I needed it.
+
 ![backend](https://github.com/tsl0922/ttyd/workflows/backend/badge.svg)
 ![frontend](https://github.com/tsl0922/ttyd/workflows/frontend/badge.svg)
 [![GitHub Releases](https://img.shields.io/github/downloads/tsl0922/ttyd/total)](https://github.com/tsl0922/ttyd/releases)
