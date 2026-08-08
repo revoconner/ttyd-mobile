@@ -1,14 +1,14 @@
 ## Prerequisites
 
-> **NOTE:** yarn v2 is required.
+> **NOTE:** Node.js >= 18 and npm are required.
 
-Install [Yarn](https://yarnpkg.com/getting-started/install), and run: `yarn install`.
+Run: `npm install`.
 
 ## Development
 
 1. Start ttyd: `ttyd bash`
-2. Start the dev server: `yarn run start`
+2. Start the dev server: `npm run start`
 
 ## Publish
 
-Run `yarn run build`, this will compile the inlined html to `../src/html.h`.
+Run `npm run build`, this will compile the inlined html to `../src/html.h`.

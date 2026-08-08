@@ -107,7 +107,7 @@ export class Xterm {
     constructor(
         private options: XtermOptions,
         private sendCb: () => void
-    ) { }
+    ) {}
 
     dispose() {
         for (const d of this.disposables) {
@@ -157,6 +157,12 @@ export class Xterm {
         this.terminal.focus();
     }
 
+    @bind
+    public sendTab() {
+        this.sendData('\t');
+        this.terminal.focus();
+    }
+
     private ctrlModeListener?: (event: KeyboardEvent) => void;
 
     @bind
@@ -186,6 +192,38 @@ export class Xterm {
         if (this.ctrlModeListener) {
             document.removeEventListener('keydown', this.ctrlModeListener, true);
             this.ctrlModeListener = undefined;
+        }
+    }
+
+    private altModeListener?: (event: KeyboardEvent) => void;
+
+    @bind
+    public enableAltMode(callback: () => void) {
+        this.disableAltMode();
+        this.altModeListener = (event: KeyboardEvent) => {
+            if (event.type !== 'keydown') return;
+            event.preventDefault();
+            event.stopPropagation();
+            this.terminal.textarea?.dispatchEvent(
+                new KeyboardEvent('keydown', {
+                    key: event.key,
+                    code: event.code,
+                    altKey: true,
+                    bubbles: true,
+                    cancelable: true,
+                })
+            );
+            this.disableAltMode();
+            callback();
+        };
+        document.addEventListener('keydown', this.altModeListener, true);
+    }
+
+    @bind
+    public disableAltMode() {
+        if (this.altModeListener) {
+            document.removeEventListener('keydown', this.altModeListener, true);
+            this.altModeListener = undefined;
         }
     }
 

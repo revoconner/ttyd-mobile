@@ -10,6 +10,7 @@
   "author": "Shuanglei Tao <tsl0922@gmail.com>",
   "license": "MIT",
   "scripts": {
+    "postinstall": "patch-package",
     "prestart": "gulp clean",
     "start": "NODE_ENV=development && webpack serve",
     "build": "NODE_ENV=production webpack && gulp",
@@ -36,6 +37,7 @@
     "gulp-inline-source": "^4.0.0",
     "gulp-rename": "^2.0.0",
     "html-webpack-plugin": "^5.6.0",
+    "patch-package": "^8.0.0",
     "mini-css-extract-plugin": "^2.8.1",
     "sass": "^1.71.1",
     "sass-loader": "^14.1.1",
@@ -66,9 +68,5 @@
     "trzsz": "^1.1.5",
     "whatwg-fetch": "^3.6.20",
     "zmodem.js": "^0.1.10"
-  },
-  "resolutions": {
-    "zmodem.js@^0.1.10": "patch:zmodem.js@npm%3A0.1.10#./.yarn/patches/zmodem.js-npm-0.1.10-e5537fa2ed.patch"
-  },
-  "packageManager": "yarn@3.6.3"
+  }
 }
